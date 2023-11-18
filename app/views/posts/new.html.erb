@@ -1,0 +1,18 @@
+<%= form_with model: Post.new do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li style="color: red"><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label 'Quip:' %><br>
+  <%= form.text_field :wisp %><br>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.submit %>
+<% end %>

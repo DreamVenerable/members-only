@@ -1,0 +1,21 @@
+
+<ul>
+  <% @posts.each do |post| %>
+
+    <% if user_signed_in? %>
+      <li>
+        <%= post.wisp + ' - ' %> <%= User.find(post.user_id).username %>
+      </li>
+      
+    <% else %>
+      <li>
+        <%= post.wisp %>
+      </li>
+    <% end %>
+
+
+
+  <% end %>
+</ul>
+
+<%= link_to "New Quip", new_post_path %>
